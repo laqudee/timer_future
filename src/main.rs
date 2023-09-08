@@ -13,6 +13,9 @@ use {
     timer_future::TimerFuture,
 };
 
+mod use_pin;
+mod use_pin_in_heap;
+
 // 执行器通过给channel发送任务来工作
 struct Executor {
     ready_queue: Receiver<Arc<Task>>,
@@ -72,6 +75,10 @@ fn new_executor_and_spawner() -> (Executor, Spawner) {
 }
 
 fn main() {
+    use_pin::test_pin();
+
+    use_pin_in_heap::test_pin();
+
     let (executor, spawner) = new_executor_and_spawner();
 
     spawner.spawn(async {
