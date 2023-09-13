@@ -15,6 +15,7 @@ use {
 
 mod use_pin;
 mod use_pin_in_heap;
+mod web_server;
 
 // 执行器通过给channel发送任务来工作
 struct Executor {
@@ -75,6 +76,8 @@ fn new_executor_and_spawner() -> (Executor, Spawner) {
 }
 
 fn main() {
+    // web_server::start();
+
     use_pin::test_pin();
 
     use_pin_in_heap::test_pin();
